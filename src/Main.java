@@ -38,7 +38,6 @@ public class Main {
 
             if (!hasTree && getPlayer().isPlayer() && depth == board.getMoves().size()) {
                 createTree(move, depth, heuristicMinMax);
-                System.out.println(root);
                 hasTree = true;
             }
 

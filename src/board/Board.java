@@ -62,14 +62,14 @@ public class Board {
                 }
             }
         }
-        return player - ia;
+        return ia - player;
     }
 
     public static void finish(boolean[][] board) {
         System.out.println("\nGame over!");
-        if (Board.checkScore(board) > 0) {
+        if (Board.checkScore(board) < 0) {
             System.out.println("Player win!");
-        } else if (Board.checkScore(board) < 0) {
+        } else if (Board.checkScore(board) > 0) {
             System.out.println("IA win!");
         } else {
             System.out.println("Drawn!");

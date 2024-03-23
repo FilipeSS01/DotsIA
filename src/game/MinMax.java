@@ -59,7 +59,7 @@ public class MinMax {
 
     private static int minMaxSheet(boolean[][] board) {
         int result = Board.checkScore(board);
-        return (result > 0) ? -1 : (result < 0) ? 1 : 0;
+        return (result < 0) ? -1 : (result > 0) ? 1 : 0;
     }
 
     private static int getMinMaxChild(Node node) {
