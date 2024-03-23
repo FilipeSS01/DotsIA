@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Node {
     private ArrayList<Node> children;
@@ -32,12 +33,21 @@ public class Node {
 
     public int bestMove() {
         int value = Integer.MIN_VALUE;
+        int valueChildren = 0;
         Node bestNode = null;
 
         for (Node node : getChildren()) {
             if (node.getMinMax() > value) {
                 value = node.getMinMax();
                 bestNode = node;
+                valueChildren = node.getChildren().stream().mapToInt(Node::getMinMax).sum();
+            } else if (node.getMinMax() == value && !node.getChildren().isEmpty()) {
+                int aux = node.getChildren().stream().mapToInt(Node::getMinMax).sum();
+                if (aux > valueChildren) {
+                    valueChildren = aux;
+                    value = node.getMinMax();
+                    bestNode = node;
+                }
             }
         }
 
